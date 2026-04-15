@@ -18,14 +18,14 @@ const STATS = [
 
 function LoadingMap() {
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="text-center space-y-4">
-        <div className="w-16 h-16 mx-auto relative">
-          <div className="absolute inset-0 rounded-full border-2 border-jade-500/30 animate-ping" />
-          <div className="absolute inset-2 rounded-full border-2 border-jade-400/50 animate-spin" />
-          <div className="absolute inset-4 rounded-full bg-jade-500/30" />
+    <div className="flex items-center justify-center w-full h-full">
+      <div className="space-y-4 text-center">
+        <div className="relative w-16 h-16 mx-auto">
+          <div className="absolute inset-0 border-2 rounded-full border-jade-500/30 animate-ping" />
+          <div className="absolute border-2 rounded-full inset-2 border-jade-400/50 animate-spin" />
+          <div className="absolute rounded-full inset-4 bg-jade-500/30" />
         </div>
-        <p className="text-white/40 text-sm">Đang tải bản đồ 3D...</p>
+        <p className="text-sm text-white/40">Đang tải bản đồ 3D...</p>
       </div>
     </div>
   )
@@ -45,15 +45,15 @@ export default function HomePage() {
       {/* Animated background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-[#050a0f] via-[#080c14] to-[#060d1a]" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-jade-900/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-900/15 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gold-900/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute rounded-full top-1/4 left-1/4 w-96 h-96 bg-jade-900/20 blur-3xl animate-pulse-slow" />
+        <div className="absolute rounded-full bottom-1/3 right-1/4 w-80 h-80 bg-blue-900/15 blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
+        <div className="absolute w-64 h-64 rounded-full top-1/2 left-1/2 bg-gold-900/10 blur-3xl animate-float" />
       </div>
 
       {/* Hero section */}
-      <section className="relative min-h-screen flex">
+      <section className="relative flex min-h-screen">
         {/* Left: text content */}
-        <div className="relative z-10 flex flex-col justify-center px-6 sm:px-12 lg:px-20 w-full lg:w-1/2 pt-24 pb-16">
+        <div className="relative z-10 flex flex-col justify-center w-full px-6 pt-24 pb-16 sm:px-12 lg:px-20 lg:w-1/2">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,19 +61,19 @@ export default function HomePage() {
           >
             <div className="flex items-center gap-2 mb-6">
               <div className="w-8 h-px bg-jade-500" />
-              <span className="text-jade-400 text-sm font-medium tracking-widest uppercase">
+              <span className="text-sm font-medium tracking-widest uppercase text-jade-400">
                 Khám phá Việt Nam
               </span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-white leading-none mb-6">
+            <h1 className="mb-6 text-5xl font-bold leading-none text-white sm:text-6xl lg:text-7xl font-display">
               Hành trình{' '}
               <span className="italic gradient-text">ngàn năm</span>
               <br />
               văn hiến
             </h1>
 
-            <p className="text-white/60 text-lg leading-relaxed max-w-md mb-10">
+            <p className="max-w-md mb-10 text-lg leading-relaxed text-white/60">
               Khám phá 63 tỉnh thành với ẩm thực đặc sắc, cảnh quan tuyệt vời và di sản văn hóa 
               phong phú qua bản đồ 3D tương tác.
             </p>
@@ -83,7 +83,7 @@ export default function HomePage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate('/explore')}
-                className="btn-primary flex items-center gap-2"
+                className="flex items-center gap-2 btn-primary"
               >
                 <Compass size={16} />
                 Khám phá ngay
@@ -92,7 +92,7 @@ export default function HomePage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('map-section')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-secondary flex items-center gap-2"
+                className="flex items-center gap-2 btn-secondary"
               >
                 <MapPin size={16} />
                 Xem bản đồ
@@ -100,7 +100,7 @@ export default function HomePage() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-14">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mt-14">
               {STATS.map(({ icon: Icon, value, label }, i) => (
                 <motion.div
                   key={label}
@@ -110,7 +110,7 @@ export default function HomePage() {
                   className="text-center"
                 >
                   <div className="text-2xl font-display font-bold text-white mb-0.5">{value}</div>
-                  <div className="text-white/40 text-xs">{label}</div>
+                  <div className="text-xs text-white/40">{label}</div>
                 </motion.div>
               ))}
             </div>
@@ -122,10 +122,10 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.3 }}
-          className="hidden lg:flex flex-1 items-center justify-center relative pt-16"
+          className="relative items-center justify-center flex-1 hidden pt-16 lg:flex"
         >
           {/* Map toggle */}
-          <div className="absolute top-24 right-6 z-20 flex gap-2">
+          <div className="absolute z-20 flex gap-2 top-24 right-6">
             <button
               onClick={() => setUse3D(true)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
@@ -144,7 +144,7 @@ export default function HomePage() {
             </button>
           </div>
 
-          <div className="w-full h-[calc(100vh-4rem)] relative">
+          {/* <div className="w-full h-[calc(100vh-4rem)] relative">
             {use3D ? (
               <Suspense fallback={<LoadingMap />}>
                 <VietnamMap3D
@@ -168,14 +168,14 @@ export default function HomePage() {
                 />
               )}
             </AnimatePresence>
-          </div>
+          </div> */}
 
           {/* Instruction hint */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/30 text-xs text-center"
+            className="absolute text-xs text-center -translate-x-1/2 bottom-8 left-1/2 text-white/30"
           >
             <MouseIcon className="w-4 h-4 mx-auto mb-1 animate-bounce" />
             Click vào điểm để xem thông tin
@@ -184,8 +184,8 @@ export default function HomePage() {
       </section>
 
       {/* Mobile map section */}
-      <section id="map-section" className="lg:hidden px-4 py-12">
-        <h2 className="text-2xl font-display font-bold text-white text-center mb-6">
+      <section id="map-section" className="px-4 py-12 lg:hidden">
+        <h2 className="mb-6 text-2xl font-bold text-center text-white font-display">
           Bản đồ <span className="text-jade-400">Việt Nam</span>
         </h2>
         <div className="relative h-[500px] glass-card overflow-hidden">
@@ -214,7 +214,7 @@ export default function HomePage() {
       </section>
 
       {/* Features section */}
-      <section className="px-6 sm:px-12 lg:px-20 py-20">
+      <section className="px-6 py-20 sm:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -222,15 +222,15 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="text-4xl font-display font-bold text-white mb-4">
+            <h2 className="mb-4 text-4xl font-bold text-white font-display">
               Tại sao chọn <span className="gradient-text">Vietnam Explorer</span>?
             </h2>
-            <p className="text-white/50 max-w-2xl mx-auto">
+            <p className="max-w-2xl mx-auto text-white/50">
               Nền tảng du lịch Việt Nam toàn diện nhất với bản đồ 3D tương tác, dữ liệu phong phú và trải nghiệm người dùng tuyệt vời.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             {[
               {
                 emoji: '🗺️',
@@ -269,13 +269,13 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card p-6 hover:border-jade-500/30 transition-all duration-300 group"
+                className="p-6 transition-all duration-300 glass-card hover:border-jade-500/30 group"
               >
-                <div className="text-3xl mb-4">{emoji}</div>
-                <h3 className="text-white font-semibold text-lg mb-2 group-hover:text-jade-300 transition-colors">
+                <div className="mb-4 text-3xl">{emoji}</div>
+                <h3 className="mb-2 text-lg font-semibold text-white transition-colors group-hover:text-jade-300">
                   {title}
                 </h3>
-                <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+                <p className="text-sm leading-relaxed text-white/50">{desc}</p>
               </motion.div>
             ))}
           </div>
@@ -288,16 +288,16 @@ export default function HomePage() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto glass-card p-12"
+          className="max-w-2xl p-12 mx-auto glass-card"
         >
-          <div className="text-5xl mb-4">🇻🇳</div>
-          <h2 className="text-3xl font-display font-bold text-white mb-4">
+          <div className="mb-4 text-5xl">🇻🇳</div>
+          <h2 className="mb-4 text-3xl font-bold text-white font-display">
             Sẵn sàng khám phá?
           </h2>
-          <p className="text-white/50 mb-8">
+          <p className="mb-8 text-white/50">
             Bắt đầu hành trình khám phá 63 tỉnh thành với ẩm thực, văn hóa và thiên nhiên đặc sắc.
           </p>
-          <button onClick={() => navigate('/explore')} className="btn-gold text-base px-8 py-3">
+          <button onClick={() => navigate('/explore')} className="px-8 py-3 text-base btn-gold">
             Bắt đầu khám phá →
           </button>
         </motion.div>
