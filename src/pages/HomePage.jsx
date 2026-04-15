@@ -118,69 +118,6 @@ export default function HomePage() {
         </div>
 
         {/* Right: 3D map */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.3 }}
-          className="relative items-center justify-center flex-1 hidden pt-16 lg:flex"
-        >
-          {/* Map toggle */}
-          <div className="absolute z-20 flex gap-2 top-24 right-6">
-            <button
-              onClick={() => setUse3D(true)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                use3D ? 'bg-jade-600 text-white' : 'bg-white/5 text-white/50 hover:text-white'
-              }`}
-            >
-              3D
-            </button>
-            <button
-              onClick={() => setUse3D(false)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                !use3D ? 'bg-jade-600 text-white' : 'bg-white/5 text-white/50 hover:text-white'
-              }`}
-            >
-              2D
-            </button>
-          </div>
-
-          {/* <div className="w-full h-[calc(100vh-4rem)] relative">
-            {use3D ? (
-              <Suspense fallback={<LoadingMap />}>
-                <VietnamMap3D
-                  onProvinceSelect={handleProvinceSelect}
-                  selectedProvinceId={selectedProvince?.id}
-                />
-              </Suspense>
-            ) : (
-              <VietnamMap2D
-                onProvinceSelect={handleProvinceSelect}
-                selectedProvinceId={selectedProvince?.id}
-              />
-            )}
-
-            {/* Province popup */}
-            <AnimatePresence>
-              {selectedProvince && (
-                <ProvincePopup
-                  province={selectedProvince}
-                  onClose={() => setSelectedProvince(null)}
-                />
-              )}
-            </AnimatePresence>
-          </div> */}
-
-          {/* Instruction hint */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-            className="absolute text-xs text-center -translate-x-1/2 bottom-8 left-1/2 text-white/30"
-          >
-            <MouseIcon className="w-4 h-4 mx-auto mb-1 animate-bounce" />
-            Click vào điểm để xem thông tin
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* Mobile map section */}
